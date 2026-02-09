@@ -42,6 +42,8 @@ Move the indexing work into a worker service. This is where you go deep on backg
 - [ ] **M14:** Docker Compose — API + worker + RabbitMQ + PostgreSQL running together
 - [ ] **M15:** Deploy to Mac mini as a multi-service system
 
+> After completing each milestone, run `/reflect` to capture a quick reflection.
+
 ## Learning Triggers
 
 | Trigger | Concepts |

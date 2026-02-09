@@ -15,6 +15,8 @@ Real ops experience beats any tutorial. You'll SSH in, manage processes, contain
 - [ ] **M6:** Get a domain, point DNS to your Mac, add HTTPS
 - [ ] **M7:** Write a bash deploy script (build > copy > restart)
 
+> After completing each milestone, run `/reflect` to capture a quick reflection.
+
 ## Learning Triggers
 
 | Trigger | Concepts |

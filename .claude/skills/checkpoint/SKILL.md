@@ -22,10 +22,14 @@ Use `/checkpoint` when:
    - Check off completed milestones (change `- [ ]` to `- [x]`)
    - Only check items that are genuinely complete
 
-3. **Update the root README** (`README.md`):
+3. **Check for completed milestones**: If any milestones were just checked off, suggest:
+   "You completed M<N>. Want to run `/reflect` to capture a quick milestone reflection before we wrap up?"
+   Don't force it — just suggest.
+
+4. **Update the root README** (`README.md`):
    - Update the project status (Not Started → In Progress → Complete)
 
-4. **Create or append to the learning log** (`NN-project-name/notes/learning-log.md`):
+5. **Create or append to the learning log** (`NN-project-name/notes/learning-log.md`):
 
 ```markdown
 ## Session: <date>
@@ -45,7 +49,7 @@ Use `/checkpoint` when:
 - Approximate hours
 ```
 
-5. **Summarize** to the user: what was checked off, what was logged, and suggest what to tackle next time
+6. **Summarize** to the user: what was checked off, what was logged, and suggest what to tackle next time
 
 ## Important
 - Don't inflate progress — only check off milestones that are truly done

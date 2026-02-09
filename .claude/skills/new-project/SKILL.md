@@ -55,6 +55,8 @@ Examples:
    - [ ] **M2:** ...
    (4-8 milestones, progressively more complex)
 
+   > After completing each milestone, run `/reflect` to capture a quick reflection.
+
    ## Learning Triggers
    | Trigger | Concepts |
    |---------|----------|

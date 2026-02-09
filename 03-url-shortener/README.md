@@ -28,6 +28,8 @@ A URL shortener is small enough to finish but touches almost every engineering c
 - [ ] Monitoring dashboard
 - [ ] Load test with k6, find and fix bottlenecks
 
+> After completing each phase, run `/reflect` to capture a quick reflection.
+
 ## Learning Triggers
 
 | Trigger | Concepts |

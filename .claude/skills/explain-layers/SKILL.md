@@ -56,8 +56,14 @@ For the given code or concept, explain it at 4 layers:
 - Performance implications at this level
 
 ## Important
+- **Start each layer with one plain sentence** — no jargon in the opening line
+- **Define technical terms inline** the first time they appear
+- **Keep each layer to 3-5 bullet points** unless the user asks for more
 - Connect every layer to the user's existing knowledge (ASP.NET Core, C#, SQL Server)
-- Use concrete examples, not abstract descriptions
-- For Layer 4, go as deep as is practically useful — don't lecture on transistors
-- If the code is simple, Layer 4 can be brief. If it involves I/O, networking, or concurrency, go deep on Layer 4
+- Use concrete examples and analogies, not abstract descriptions
 - Format with clear headers so it's easy to scan and reference later
+- **Adapt depth to complexity:**
+  - For simple code: combine Layers 1-2 into a quick summary, keep Layer 4 to one sentence or skip it
+  - For complex code (I/O, networking, concurrency): go deep on all 4 layers
+  - A 10-line explanation of simple code is better than a forced 4-layer essay
+  - Ask: "Would Layer 4 help the user debug a problem?" If not, keep it brief.

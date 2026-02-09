@@ -14,6 +14,8 @@ This one project forces you through: how computers work, networking, I/O fundame
 - [ ] **M5:** Handle multiple concurrent connections with async/await
 - [ ] **M6:** Add simple logging
 
+> After completing each milestone, run `/reflect` to capture a quick reflection.
+
 ## Learning Triggers
 
 Ask Claude Code these questions when you hit them:
