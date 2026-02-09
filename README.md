@@ -17,7 +17,7 @@ Build things, hit knowledge gaps, go deep, write about what you learned.
 
 | When... | Run this | What it does |
 |---------|----------|--------------|
-| Starting a session | `/resume` | Shows where you left off and what's next |
+| Starting a session | `/resume-learning` | Shows where you left off and what's next |
 | Code doesn't make sense | `/explain-layers <code>` | Explains at 1-4 depth layers, adapted to complexity |
 | Two things seem similar | `/compare <a> <b>` | Side-by-side breakdown with tradeoffs |
 | You finished a milestone | `/reflect` | 2-minute reflection: what clicked, what was hard |

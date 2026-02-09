@@ -1,15 +1,15 @@
 ---
-name: resume
+name: resume-learning
 description: Start a learning session by picking up where you left off. Reads your latest checkpoint and project progress, then tells you where you are and what's next.
 ---
 
-# Resume
+# Resume Learning
 
 Pick up where you left off.
 
 ## When to Use This Skill
 
-Use `/resume` at the **start of a session** — before you start building.
+Use `/resume-learning` at the **start of a session** — before you start building.
 
 ## Behavior
 
