@@ -174,27 +174,37 @@ Built in phases, each adding a layer of engineering depth:
 ## Project 4: AI-Powered Tool (Weeks 21-28)
 **Build an AI documentation assistant that indexes a codebase and answers questions about it.**
 
-This is where your AI/LLM fundamentals come in, plus it's a genuine product idea.
+Full C#/.NET 10 stack. The .NET AI ecosystem has matured — Microsoft.Extensions.AI provides unified abstractions (`IChatClient`, `IEmbeddingGenerator`) that are provider-agnostic, and pgvector-dotnet works with EF Core for vector storage. No need to leave C#.
+
+### Tech Stack
+- **Microsoft.Extensions.AI** — `IChatClient`, `IEmbeddingGenerator` (swap providers without code changes)
+- **Microsoft.Extensions.VectorData** — vector store abstractions
+- **pgvector + EF Core** — vector storage in PostgreSQL (reuse from Project 3)
+- **OpenAI / Azure OpenAI / Ollama** — provider flexibility via DI
 
 ### Milestones
-1. Index a repo: read files, chunk content, generate embeddings
-2. Store embeddings in a vector database (Qdrant or pgvector in PostgreSQL)
-3. RAG query pipeline: embed question > retrieve relevant chunks > send to LLM > return answer
-4. ASP.NET Core API backend with React frontend
-5. Add function calling: LLM can search code, read files, query git history
-6. Deploy to Mac mini
+1. Set up Microsoft.Extensions.AI with an LLM provider
+2. Index a repo: read files, chunk content, generate embeddings via `IEmbeddingGenerator`
+3. Store embeddings in PostgreSQL with pgvector (EF Core + pgvector-dotnet)
+4. RAG query pipeline: embed question > vector similarity search > `IChatClient` > answer
+5. ASP.NET Core API backend + React frontend with streaming responses
+6. Add function calling / tool use — LLM can search code, read files, query git history
+7. Deploy to Mac mini
 
 ### Learning triggers
 - "What are embeddings and why do they enable semantic search?" → vector math, similarity, embedding models
 - "How do I choose chunk size and overlap?" → RAG architecture, retrieval quality
+- "What does IChatClient abstract over?" → provider abstraction, DI, middleware pipeline
 - "How do I control cost?" → token counting, caching, model selection
 - "What about hallucination?" → evaluation, grounding, prompt engineering
-- "How does function calling work?" → tool use, structured output, agent patterns
+- "How does function calling / tool use work?" → tool definitions, structured output, agent patterns
 
 ### Reference
+- [Microsoft.Extensions.AI docs](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai)
+- [.NET RAG quickstart](https://learn.microsoft.com/en-us/dotnet/ai/quickstarts/build-vector-search-app)
+- [pgvector-dotnet](https://github.com/pgvector/pgvector-dotnet)
 - Andrej Karpathy "Intro to LLMs" (YouTube)
 - Simon Willison's blog — practical LLM development
-- Anthropic/OpenAI API docs
 
 ---
 

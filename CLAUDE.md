@@ -12,7 +12,7 @@ Project-driven learning curriculum for a developer with 3.5 years experience (AS
 
 ## Environment
 - Windows 11 + Git Bash (MINGW64)
-- .NET 9, Node.js, C#, JavaScript/TypeScript
+- .NET 10, Node.js, C#, JavaScript/TypeScript
 - Mac mini available as deployment target (SSH)
 - Use forward slashes in paths
 
