@@ -171,38 +171,59 @@ Built in phases, each adding a layer of engineering depth:
 
 ---
 
-## Project 4: AI-Powered Tool (Weeks 21-28)
-**Build an AI documentation assistant that indexes a codebase and answers questions about it.**
+## Project 4: AI Documentation Assistant + Worker Service (Weeks 21-32)
+**Build an AI-powered tool that indexes a codebase and answers questions about it, with a worker service handling the background indexing pipeline.**
 
-Full C#/.NET 10 stack. The .NET AI ecosystem has matured — Microsoft.Extensions.AI provides unified abstractions (`IChatClient`, `IEmbeddingGenerator`) that are provider-agnostic, and pgvector-dotnet works with EF Core for vector storage. No need to leave C#.
+Full C#/.NET 10 stack. The AI assistant needs background processing for a real reason — generating embeddings is expensive, rate-limited, and shouldn't block HTTP requests. The worker service concepts (hosting model, queues, CRON, graceful shutdown) are learned through a genuine use case, not a manufactured one.
 
 ### Tech Stack
 - **Microsoft.Extensions.AI** — `IChatClient`, `IEmbeddingGenerator` (swap providers without code changes)
 - **Microsoft.Extensions.VectorData** — vector store abstractions
 - **pgvector + EF Core** — vector storage in PostgreSQL (reuse from Project 3)
+- **.NET Worker Service** — background indexing pipeline (`BackgroundService` / `IHostedService`)
+- **RabbitMQ** — message queue between API and worker
 - **OpenAI / Azure OpenAI / Ollama** — provider flexibility via DI
 
-### Milestones
+### Phase A: Core RAG (Weeks 21-24)
 1. Set up Microsoft.Extensions.AI with an LLM provider
 2. Index a repo: read files, chunk content, generate embeddings via `IEmbeddingGenerator`
-3. Store embeddings in PostgreSQL with pgvector (EF Core + pgvector-dotnet)
+3. Store embeddings in PostgreSQL with pgvector
 4. RAG query pipeline: embed question > vector similarity search > `IChatClient` > answer
 5. ASP.NET Core API backend + React frontend with streaming responses
-6. Add function calling / tool use — LLM can search code, read files, query git history
-7. Deploy to Mac mini
+6. Add function calling / tool use
+
+### Phase B: Background Indexing Pipeline (Weeks 25-27)
+7. Create worker service with `BackgroundService`. Understand `IHost`, `IHostedService`, lifecycle.
+8. Move embedding generation into the worker. API publishes jobs to RabbitMQ, worker processes them.
+9. CRON-scheduled re-indexing — watch for new commits, queue re-indexing automatically.
+10. Retry and failure handling — rate limits, dead letter queues, exponential backoff.
+
+### Phase C: Production Hardening (Weeks 28-29)
+11. Structured logging and health checks for both API and worker.
+12. Graceful shutdown — `CancellationToken`, SIGTERM, in-flight work completion.
+13. Cost controls — concurrency limits on embedding requests, token budget tracking.
+
+### Phase D: Deploy (Weeks 30-32)
+14. Docker Compose — API + worker + RabbitMQ + PostgreSQL.
+15. Deploy to Mac mini as a multi-service system.
 
 ### Learning triggers
 - "What are embeddings and why do they enable semantic search?" → vector math, similarity, embedding models
-- "How do I choose chunk size and overlap?" → RAG architecture, retrieval quality
 - "What does IChatClient abstract over?" → provider abstraction, DI, middleware pipeline
-- "How do I control cost?" → token counting, caching, model selection
-- "What about hallucination?" → evaluation, grounding, prompt engineering
+- "What does IHost actually do when it starts?" → .NET generic host, service lifetime, DI scope
+- "How is BackgroundService different from IHostedService?" → abstraction layers, ExecuteAsync vs StartAsync/StopAsync
+- "When should I use a worker service vs CRON vs Azure Functions vs Hangfire?" → architecture patterns, tradeoffs
+- "What happens if the worker crashes mid-embedding?" → at-least-once delivery, idempotency, dead letter queues
+- "Why a message queue instead of just calling the embedding API from the web app?" → decoupling, backpressure, reliability
 - "How does function calling / tool use work?" → tool definitions, structured output, agent patterns
 
 ### Reference
 - [Microsoft.Extensions.AI docs](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai)
 - [.NET RAG quickstart](https://learn.microsoft.com/en-us/dotnet/ai/quickstarts/build-vector-search-app)
 - [pgvector-dotnet](https://github.com/pgvector/pgvector-dotnet)
+- [.NET Worker Service docs](https://learn.microsoft.com/en-us/dotnet/core/extensions/workers)
+- [RabbitMQ .NET tutorial](https://www.rabbitmq.com/tutorials)
+- *Designing Data-Intensive Applications* by Kleppmann — Ch 11 (Stream Processing)
 - Andrej Karpathy "Intro to LLMs" (YouTube)
 - Simon Willison's blog — practical LLM development
 
@@ -216,7 +237,8 @@ Don't study these in isolation. Encounter them through the projects:
 | Design patterns | Middleware=Chain of Responsibility, DI everywhere, Strategy for URL generation |
 | Software architecture | URL shortener evolves from simple to modular monolith |
 | System design | Load testing forces you to think about scaling, caching, queues |
-| CQRS/event-driven | Analytics read model vs write model in URL shortener |
+| Event-driven architecture | Worker service consumes indexing jobs from AI assistant API via RabbitMQ |
+| CQRS/event-driven | Separate query API from indexing pipeline in AI assistant |
 | DDD tactical patterns | Domain modeling in the AI assistant |
 
 When you encounter an architectural decision, ask Claude Code to explain the pattern, alternatives, and tradeoffs. Write it up in `deep-dives/`.
