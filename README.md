@@ -45,7 +45,7 @@ Build things, hit knowledge gaps, go deep, write about what you learned.
 
 | # | Project | Status | Weeks | Key Concepts |
 |---|---------|--------|-------|-------------|
-| 01 | [HTTP Server from Scratch](01-http-server/) | Not Started | 1-4 | Networking, I/O, concurrency, OS fundamentals |
+| 01 | [HTTP Server from Scratch](01-http-server/) | In Progress (M3/M6) | 1-4 | Networking, I/O, concurrency, OS fundamentals |
 | 02 | [Deploy to Mac Mini](02-deploy-to-mac/) | Not Started | 5-8 | Linux/macOS, terminal, Docker, deployment, security |
 | 03 | [URL Shortener](03-url-shortener/) | Not Started | 9-20 | Database internals, testing, API design, observability, performance |
 | 04 | [AI Assistant](04-ai-assistant/) | Not Started | 21-32 | Embeddings, RAG, LLM APIs, worker services, message queues, background processing |

@@ -7,9 +7,9 @@ This one project forces you through: how computers work, networking, I/O fundame
 
 ## Milestones
 
-- [ ] **M1:** Accept a TCP connection, read raw bytes, print to console
-- [ ] **M2:** Parse an HTTP/1.1 request (method, path, headers, body)
-- [ ] **M3:** Route requests to handlers, return proper HTTP responses
+- [x] **M1:** Accept a TCP connection, read raw bytes, print to console
+- [x] **M2:** Parse an HTTP/1.1 request (method, path, headers, body)
+- [x] **M3:** Route requests to handlers, return proper HTTP responses
 - [ ] **M4:** Serve static files from disk
 - [ ] **M5:** Handle multiple concurrent connections with async/await
 - [ ] **M6:** Add simple logging
