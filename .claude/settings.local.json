@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx skills:*)",
+      "WebFetch(domain:skills.sh)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial repo setup: project-driven learning curriculum with custom skills\n\n4 projects \\(HTTP server, deploy to Mac, URL shortener, AI assistant\\),\n5 custom Claude Code skills \\(deep-dive, checkpoint, explain-layers, compare, new-project\\),\nbookshelf, and learning plan.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}
